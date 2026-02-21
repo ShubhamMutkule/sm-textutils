@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="error-message" style="
+            padding: 10px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            position: relative;
+        ">
+            {{ message }}
+
+            <span onclick="this.parentElement.style.display='none'" style="
+                position: absolute;
+                right: 10px;
+                cursor: pointer;
+                font-weight: bold;
+            ">✖</span>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+<div class="main-container">
+    <div class="card">
+
+        <h1>✨ Welcome to SMTextUtils</h1>
+        <p>Analyze your text quickly and efficiently.</p>
+
+        <form action="/analyze" method="get">
+
+            <textarea name="text" placeholder="Enter your text here..."></textarea>
+
+            <div class="options">
+                <label><input type="checkbox" name="removepunc"> Remove Punctuations</label>
+                <label><input type="checkbox" name="fullcapse"> Convert to UPPERCASE</label>
+                <label><input type="checkbox" name="lowercapse"> Convert to LowerCase</label>
+                <label><input type="checkbox" name="newlineremover"> Remove New Lines</label>
+                <label><input type="checkbox" name="spaceremover"> Remove Extra Spaces</label>
+                <label><input type="checkbox" name="charcount"> Count Characters</label>
+            </div>
+
+            <button type="submit">Analyze Text</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+function closeMessage() {
+    document.getElementById("error-message").style.display = "none";
+}
+</script>
+
+{% endblock body %}

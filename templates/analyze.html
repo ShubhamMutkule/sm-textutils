@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Analyze{% endblock title %}
+
+{% block body %}
+
+<div class="result-container">
+    <div class="result-card">
+
+        <h2>✨ Analysis Result</h2>
+
+        <div class="purpose">
+            <strong>Operation Performed:</strong> {{ purpose }}
+        </div>
+
+        <div class="result-box" id="resultText">
+            <pre>{{ analyzed_text }}</pre>
+        </div>
+
+        <div class="buttons">
+            <button onclick="copyText()">Copy Text</button>
+            <a href="/" class="back-btn">Back</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function copyText() {
+    let text = document.getElementById("resultText").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Text Copied Successfully!");
+}
+</script>
+
+{% endblock body %}
